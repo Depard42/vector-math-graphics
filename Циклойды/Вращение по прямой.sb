@@ -1,0 +1,29 @@
+pi = Math.Pi
+GraphicsWindow.Height = 200
+GraphicsWindow.Width = 800
+x0 = 30
+y0 = 100
+r = 50
+GraphicsWindow.BrushColor = "black"
+'Создание шейпа "точка"
+tchk = Shapes.AddEllipse(10, 10)
+GraphicsWindow.BrushColor = "White"
+'Создание шейпа "круг"
+krug = Shapes.AddEllipse(2*r, 2*r)
+'Указание степени прозрачности шейпа в процентах (50%)
+Shapes.SetOpacity(krug,50)
+'Придание шейпу установленной прозрачности
+Shapes.GetOpacity(krug)
+GraphicsWindow.DrawLine(x0,y0 + r, 800 - x0, y0 + r)
+GraphicsWindow.BrushColor = "black"
+For u = pi/2 To 4*pi + pi/2 + pi/3 Step pi/1000
+  xc = u*r - x0
+  xt = xc + r* Math.Cos(u)
+  yt = y0 + r* Math.Sin(u)
+  'Перемещение шейпов
+  Shapes.Move(tchk,xt - 5, yt - 5)
+  Shapes.Move(krug,xc - r, y0 - r)
+  GraphicsWindow.SetPixel(xt,yt,"red")
+  'Пауза
+  Program.Delay(1)
+  EndFor

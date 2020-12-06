@@ -1,0 +1,38 @@
+x0=200
+y0=300
+xs=400
+ys=130
+a=170
+pi=Math.Pi
+k=1/7
+h=200
+i=0
+For u1=0 To -2*pi Step -pi/1000
+  For u=0 To 2*pi Step 2*pi/5
+    x=Math.Cos(u+u1)*a/2+x0
+    y=k*Math.Sin(u+u1)*a/2+y0
+    x1=Math.Cos(u+2*pi/5+u1)*a/2+x0
+    y1=k*Math.Sin(u+2*pi/5+u1)*a/2+y0
+    If (Math.Remainder(i,6)=0 ) then
+      GraphicsWindow.BrushColor="Gray"
+      GraphicsWindow.FillTriangle(x,y,x1,y1,x0,y0-h)
+    EndIf
+    GraphicsWindow.DrawLine(x,y,x1,y1)
+    GraphicsWindow.DrawLine(x,y,x0,y0-h)
+    
+    x=Math.Cos(u-u1)*a/2+xs
+    y=k*Math.Sin(u-u1)*a/2+ys
+    x1=Math.Cos(u+2*pi/5-u1)*a/2+xs
+    y1=k*Math.Sin(u+2*pi/5-u1)*a/2+ys
+    If (Math.Remainder(i,6)=0 ) then
+      GraphicsWindow.BrushColor="Gray"
+      GraphicsWindow.FillTriangle(x,y,x1,y1,xs,ys+h)
+    EndIf
+    GraphicsWindow.DrawLine(x,y,x1,y1)
+    GraphicsWindow.DrawLine(x,y,xs,ys+h)
+    i=i+1
+    EndFor
+  For tm=0 To 5000
+  EndFor
+  GraphicsWindow.Clear() 
+EndFor

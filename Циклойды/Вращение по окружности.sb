@@ -1,0 +1,37 @@
+GraphicsWindow.Height = 500
+GraphicsWindow.Width = 600
+pi = Math.Pi
+XO=350
+YO=250
+R1=80
+r2=40
+
+GraphicsWindow.BrushColor = "Black"
+point = Shapes.AddEllipse(10,10)
+point1 = Shapes.AddEllipse(10,10)
+GraphicsWindow.BrushColor = "White"
+circle = Shapes.AddEllipse(2*r2,2*r2)
+circle1 = Shapes.AddEllipse(2*r2,2*r2)
+Shapes.SetOpacity(circle,60)
+Shapes.SetOpacity(circle1,60)
+
+GraphicsWindow.DrawEllipse(XO-R1,YO-R1,2*R1,2*R1)
+
+
+For u=0 To 50*pi Step pi/2000
+  xc = XO+Math.Cos(u)*(R1+r2)
+  yc = YO+Math.Sin(u)*(R1+r2)
+  xc1 = XO+Math.Cos(u)*(R1-r2)
+  yc1 = YO+Math.Sin(u)*(R1-r2)
+  xt = xc + r2*Math.Cos(u*10)
+  yt = yc + r2*Math.Sin(u*10)
+  xt1 = xc1 + r2*Math.Cos(u*10)
+  yt1 = yc1 + r2*Math.Sin(u*10)
+  Shapes.Move(point,xt-5,yt-5)
+  Shapes.Move(point1,xt1-5,yt1-5)
+  Shapes.Move(circle,xc-r2, yc-r2)
+  Shapes.Move(circle1,xc1-r2, yc1-r2)
+  GraphicsWindow.SetPixel(xt,yt,"Red")
+  GraphicsWindow.SetPixel(xt1,yt1,"Red")
+  Program.Delay(1)
+EndFor
